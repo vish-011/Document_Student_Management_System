@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(){
+    FILE *fptr;
+    //to open a file and write in it
+    fptr = fopen("student.txt", "a+");
+
+    char choice = 'y';
+
+    if (fptr == NULL){
+        printf("The file is opened unsuccessfully.\n");
+        return 1;
+    }
+    int rollnumber = 1;
+
+    while (1){
+        char name[100];
+        int age;
+        float cgpa;
+
+        printf("Enter the name: ");
+        scanf(" ");
+        fgets(name, sizeof(name), stdin);
+        name[strcspn(name, "\n")] = '\0';
+
+        printf("Enter the age: ");
+        scanf("%d", &age);
+
+        printf("Enter the CGPA: ");
+        scanf("%f", &cgpa);
+
+        fprintf(fptr, "Name: %s\nAge: %d\nCGPA: %f\nRoll Number: %d\n\n", name, age, cgpa, rollnumber++);
+
+
+        printf("Do you want to add more students: (y/n)");
+        scanf(" %c", &choice);
+
+        if(choice == 'n') break;
+    }
+
+    fclose(fptr);
+    printf("The file is closed successfully.\n");
+    return 0;
+}
