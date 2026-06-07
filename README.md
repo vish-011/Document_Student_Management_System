@@ -1,36 +1,35 @@
-# Student Record Management System (C)
+# Student Record Management System
 
 ## Overview
 
-This is a simple C program that allows users to enter student information and store it in a text file. The program uses file handling functions to append student records to a file named `student.txt`.
+This is a simple C program that allows users to enter student details and store them in a text file named `student.txt`.
 
-NOTE: You don't have to make a file named 'student.txt'. If the file doesn't exist, the program will make one for you.
-
-Each student record contains:
+The program collects the following information for each student:
 
 * Name
 * Age
 * CGPA
 * Roll Number
 
-The program continues accepting student records until the user chooses to stop.
+All records are appended to the file, ensuring that previously stored data is preserved.
 
 ---
 
 ## Features
 
-* Accepts multiple student records.
-* Stores data in a text file.
-* Automatically assigns roll numbers during program execution.
-* Uses file handling (`fopen`, `fprintf`, `fclose`).
-* Demonstrates string handling with `fgets()` and `strcspn()`.
+* Stores student information in a text file.
+* Supports multiple student entries in a single execution.
+* Allows users to manually assign roll numbers.
+* Uses file handling functions such as `fopen()`, `fprintf()`, and `fclose()`.
+* Preserves existing records using append mode (`a+`).
+* Handles names containing spaces using `fgets()`.
 
 ---
 
 ## Technologies Used
 
 * C Programming Language
-* Standard C Libraries:
+* Standard Libraries:
 
   * `stdio.h`
   * `string.h`
@@ -38,19 +37,19 @@ The program continues accepting student records until the user chooses to stop.
 
 ---
 
-## How It Works
+## How the Program Works
 
-1. Opens or creates a file named `student.txt` in append mode (`a+`).
+1. Opens (or creates) `student.txt` in append mode.
 2. Prompts the user to enter:
 
    * Student Name
    * Age
    * CGPA
-3. Assigns a roll number.
-4. Saves the information to the file.
-5. Asks whether another student record should be added.
-6. Repeats until the user enters `n`.
-7. Closes the file safely.
+   * Roll Number
+3. Writes the information to the file.
+4. Asks whether the user wants to add another student.
+5. Repeats until the user enters `n` or `N`.
+6. Closes the file before terminating.
 
 ---
 
@@ -66,11 +65,13 @@ gcc student.c -o student
 
 ## Running the Program
 
+### Linux / macOS
+
 ```bash
 ./student
 ```
 
-For Windows:
+### Windows
 
 ```cmd
 student.exe
@@ -78,62 +79,87 @@ student.exe
 
 ---
 
-## Example
-
-### Input
+## Sample Input
 
 ```text
 Enter the name: John Doe
 Enter the age: 20
 Enter the CGPA: 8.5
-Do you want to add more students: (y/n) n
+Enter the Roll Number: 101
+Do you want to add more students(y/n): n
 ```
 
-### Output Stored in student.txt
+---
+
+## Sample Output (student.txt)
 
 ```text
 Name: John Doe
 Age: 20
 CGPA: 8.500000
-Roll Number: 1
+Roll Number: 101
 ```
 
 ---
 
-## File Mode Used
+## File Mode
+
+The file is opened using:
 
 ```c
 fopen("student.txt", "a+");
 ```
 
+### Meaning
+
 * `a` → Append data to the end of the file.
 * `+` → Allows both reading and writing.
 
-Existing data in the file is preserved.
+This ensures that existing student records are not overwritten.
+
+---
+
+## Project Structure
+
+```text
+.
+├── student.c
+├── student.txt
+└── README.md
+```
 
 ---
 
 ## Limitations
 
-* Roll numbers restart from 1 each time the program is executed.
-* Student records are stored as plain text instead of structured data.
-* No validation for invalid age or CGPA values.
+* Roll numbers are entered manually and are not validated for uniqueness.
+* No input validation for age or CGPA.
+* Student records are stored as plain text rather than structured data.
+* The program currently supports only adding records; it cannot search, edit, or delete them.
 
 ---
 
 ## Future Improvements
 
-* Generate unique roll numbers across multiple program runs.
-* Add functionality to search, update, and delete student records.
-* Store records in binary format using `fwrite()` and `fread()`.
-* Add input validation and error handling.
+* Automatically generate unique roll numbers.
+* Validate user input.
+* Implement search functionality.
+* Update and delete student records.
+* Store student data using structures and binary files.
+* Add a menu-driven interface.
+
+---
+
+## Learning Concepts Demonstrated
+
+* File Handling in C
+* User Input Processing
+* String Manipulation
+* Loops and Conditional Statements
+* Text File Operations
 
 ---
 
 ## Author
 
-Created as a practice project to learn:
-
-* C Programming
-* File Handling
-* User Input Management
+A beginner C programming project created for practicing file handling and user input management.
