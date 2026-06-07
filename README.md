@@ -4,6 +4,8 @@
 
 This is a simple C program that allows users to enter student information and store it in a text file. The program uses file handling functions to append student records to a file named `student.txt`.
 
+NOTE: You don't have to make a file named 'student.txt'. If the file doesn't exist, the program will make one for you.
+
 Each student record contains:
 
 * Name
